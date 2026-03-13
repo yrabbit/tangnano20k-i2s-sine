@@ -7,7 +7,8 @@ module top #(
     output      sck,
     output      bck,
     output      lrck,
-    output      dout
+    output      dout,
+	output      [8:0]la
 );
 
     `define MAX_VAL 32'h7FFFFFFF
@@ -74,7 +75,8 @@ module top #(
         .clk(sys_clk),
         .rst(btn),
         .addr(sample_cnt),
-        .value(sample)
+        .value(sample),
+	    .la(la)
     );
 
     assign sck = sys_clk;

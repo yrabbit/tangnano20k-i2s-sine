@@ -1,14 +1,17 @@
 module sine_lookup(
-    input clk,
-    input rst,
-    input [10:0] addr,
-    output wire [31:0] value
+    input wire clk,
+    input wire rst,
+    input wire [10:0] addr,
+    output wire [31:0] value,
+	output wire [8:0] la
 );
 
     reg [8:0] lookup_addr;
     wire [31:0] prom_data;
     reg [31:0] full_data;
     reg [4:0] counter;
+
+	assign la = lookup_addr;
 
     always @(posedge clk) begin
         if (addr[9]) begin

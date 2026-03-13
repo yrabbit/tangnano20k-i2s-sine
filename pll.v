@@ -12,9 +12,9 @@
  */
 
 module pll(
-        input  clock_in,
-        output clock_out,
-        output locked
+        input  wire clock_in,
+        output wire clock_out,
+        output wire locked
     );
 
     // rPLL #(
