@@ -71,6 +71,14 @@ hex_data = [['00000000', '006487E3', '00C90F88', '012D96B1', '01921D20', '01F6A2
 # Flatten the list
 flat_hex = [val for sublist in hex_data for val in sublist]
 
+with open("../wave-rom.hex", "wt") as f:
+    for i, rc in enumerate(flat_hex):
+        f.write(rc)
+        if ((i + 1) % 4) == 0:
+            f.write('\n')
+        else:
+            f.write(' ')
+
 def hex_to_signed_32(hex_str):
     return ctypes.c_int32(int(hex_str, 16)).value
 

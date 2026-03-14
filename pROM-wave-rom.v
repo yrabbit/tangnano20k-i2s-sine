@@ -6,6 +6,19 @@ module wave_rom(
 	output wire [31:0] data
 );
 
+	reg [31:0] rom [0:511];
+	reg [31:0] data_r;
+	assign data = data_r;
+
+	always @(posedge clk) begin
+		data_r <= rom[ad];
+	end
+
+	initial begin
+		$readmemh("wave-rom.hex", rom);
+	end
+
+	/*
 	wire gnd, vcc;
 	assign gnd = 1'b0;
 	assign vcc = 1'b1;
@@ -27,5 +40,6 @@ module wave_rom(
 	`include "wave-rom.vh"
 
 	assign data = data_w;
+	*/
 
 endmodule
